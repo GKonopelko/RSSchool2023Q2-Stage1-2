@@ -180,10 +180,6 @@ line-height: 150%; /* 24px */
   transition: all 0.4s ease-out; 
 }
 
-.coffee-menu {
-  /* height: 30px; */
-
-}
 .coffee-menu img {
   width: 20px;
   height: 20px;
@@ -1034,5 +1030,5 @@ line-height: 125%; /* 30px */
 font-size: 24px;
 font-style: normal;
 font-weight: 600;
-line-height: 125%; /* 30px */
+line-height: 125%; 
 }
