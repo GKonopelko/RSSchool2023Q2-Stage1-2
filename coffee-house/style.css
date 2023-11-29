@@ -180,14 +180,18 @@ line-height: 150%; /* 24px */
   transition: all 0.4s ease-out; 
 }
 
+.coffee-menu {
+  /* height: 30px; */
+
+}
 .coffee-menu img {
   width: 20px;
   height: 20px;
 }
 
 .coffee-menu a {
-  line-height: 200%;
-  gap: 10px
+  display: flex;
+  gap: 10px;
 }
 
 .nonactive {
@@ -290,7 +294,7 @@ line-height: 150%; /* 24px */
   transition: all 0.2s ease-out;
   display: block;
 	position: absolute;
-	left: 55%;
+	left: 58%;
 	transition: all 0.2s ease-out;
 }
 
@@ -417,6 +421,7 @@ gap: 20px;
   width: 480px;
 height: 480px;
 background: url(images/coffee-slider-1.png),var(--background-body) 50% / cover no-repeat;
+background-size: 100%;
 background-position: center; 
 
 }
@@ -796,12 +801,6 @@ font-weight: 600;
 line-height: 150%; /* 24px */
 }
 
-.pin-line {
-  width: 1px;
-height: 2px;
-background: #E1D4C9;
-}
-
 .link-contact {
 position: relative;
 }
@@ -914,7 +913,7 @@ cursor: pointer;
 
 .tab-item__icon {
   display: flex;
-  padding: 5px 7px;
+  padding: 5px 5px;
   justify-content: center;
   align-items: center;border-radius: 100px;
   background: var(--border-light, #C1B6AD);
@@ -952,7 +951,7 @@ transition: all 0.2s ease-in-out;
 
 .main__container__grid {
   display: flex;
-width: 1370px;
+width: 1360px;
 justify-content: center;
 align-items: flex-start;
 align-content: flex-start;
@@ -962,6 +961,7 @@ flex-wrap: wrap;
 
 .card__preview {
   flex: 0 0 20%;
+  width:310px;
   display: flex;
 height: 506px;
 flex-direction: column;
