@@ -1,0 +1,172 @@
+
+.offer__button {
+  display: flex;
+width: 200px;
+padding: 32px 78px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 100px;
+background: $--background-body;
+color: $--text-dark;
+cursor: pointer;
+position: relative;
+}
+
+.offer__button__text {
+  display: block;
+	position: absolute;
+	left: 40%;
+	// transition: all 0.2s ease-out;
+  color: $--text-dark;
+  text-align: center;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  @extend %transition-out;
+}
+
+.offer__button img {
+  opacity: 0;
+  transition: all 0.2s ease-out;
+  display: block;
+	position: absolute;
+	left: 58%;
+	@extend %transition-out;
+}
+
+.offer__button:hover img {
+	opacity: 1; 
+  @extend %transition-hover; 
+}
+.offer__button:hover
+.offer__button__text {
+  display: block;
+	position: absolute;
+	left: 32%;
+	@extend %transition-hover;
+}
+
+
+.button-icon-dark {
+  display: flex;
+width: 60px;
+height: 60px;
+justify-content: center;
+align-items: center;
+border-radius: 100px;
+border: 1px solid $--border-dark;
+cursor: pointer;
+background-color: $--background-body;
+@extend %transition-out; 
+}
+
+.button-icon-dark:hover {
+background-color: $--background-container;
+@extend %transition-hover; 
+}
+
+.button-icon-dark:hover svg {
+  fill: $--background-body;
+  @extend %transition-hover;
+}
+
+.button-icon-dark:hover svg path {
+  stroke: $--background-body;
+  @extend %transition-hover;
+}
+
+.arrow__left,
+.arrow__right {
+  width: 24px;
+height: 24px;
+flex-shrink: 0;
+}
+
+
+.slider__controls {
+  display: flex;
+align-items: flex-start;
+gap: 12px;
+}
+
+.slider__control {
+  width: 40px;
+height: 4px;
+border-radius: 100px;
+background: $--border-light;
+
+}
+
+.active {
+background: $--border-dark;
+}
+
+/* app-buttons */
+.app__buttons {
+  // width: 100%;
+  display: flex;
+// align-items: flex-start;
+gap: 20px;
+}
+
+.button__app {
+  display: flex;
+  width: 200px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  border: 1px solid $--border-dark;
+  cursor: pointer;
+  @extend %transition-out;
+}
+
+.apple__icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  @extend %transition-out;
+}
+
+.apple__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  @extend %transition-out;
+}
+
+.text__av {
+  color: $--text-dark;
+  text-align: center;
+  font-family: inherit;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 14px */
+  @extend %transition-out;
+}
+
+.text__ap {
+  color: $--text-dark;
+font-weight: 600;
+line-height: 150%; /* 24px */
+@extend %transition-out;
+}
+
+.button__app:hover {
+  background-color: $--border-dark;
+  color: $--text-light;
+  @extend %transition-hover;;
+  }
+  
+.button__app:hover svg path {
+  fill:#E1D4C9;
+  @extend %transition-hover;
+  }
+
+.button__app:hover .text__av,
+.button__app:hover .text__ap {
+    color: $--text-light;
+    @extend %transition-hover;
+    }

@@ -1,0 +1,105 @@
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* img {
+  vertical-align: top;
+} */
+
+/*--------------------*/
+/* ********* */
+
+html {
+  scroll-behavior: smooth;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  background-color: $--background-body; 
+  color: $--text-dark; 
+}
+
+.body {
+  font-size: 1.6rem;
+}
+
+* {
+  box-sizing: border-box; 
+}
+
+
+.main__title {
+  width: 800px;
+  text-align: center;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 75px */
+}
+
+.main__title span {
+  color: $--text-accent;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 125%;
+}
+
+h1.offer__title {
+  align-self: stretch;
+  color: $--text-accent;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 72px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 105%; /* 75.6px */
+}
+
+h1.offer__title span {
+  color: $--text-light;
+  font-style: normal;
+}
