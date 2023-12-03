@@ -11,6 +11,9 @@ background: $--background-body;
 color: $--text-dark;
 cursor: pointer;
 position: relative;
+@include media-tablet {
+  // padding: 20px 78px;
+}
 }
 
 .offer__button__text {
@@ -49,31 +52,30 @@ position: relative;
 
 .button-icon-dark {
   display: flex;
-width: 60px;
-height: 60px;
-justify-content: center;
-align-items: center;
-border-radius: 100px;
-border: 1px solid $--border-dark;
-cursor: pointer;
-background-color: $--background-body;
-@extend %transition-out; 
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid $--border-dark;
+  cursor: pointer;
+  background-color: $--background-body;
+  @extend %transition-out; 
+  &:hover {
+    background-color: $--background-container;
+    @extend %transition-hover; 
+  };
+  &:hover svg {
+      fill: $--background-body;
+      @extend %transition-hover;
+    };
+  &:hover svg path {
+      stroke: $--background-body;
+      @extend %transition-hover;
+    }
 }
 
-.button-icon-dark:hover {
-background-color: $--background-container;
-@extend %transition-hover; 
-}
 
-.button-icon-dark:hover svg {
-  fill: $--background-body;
-  @extend %transition-hover;
-}
-
-.button-icon-dark:hover svg path {
-  stroke: $--background-body;
-  @extend %transition-hover;
-}
 
 .arrow__left,
 .arrow__right {
@@ -103,10 +105,8 @@ background: $--border-dark;
 
 /* app-buttons */
 .app__buttons {
-  // width: 100%;
   display: flex;
-// align-items: flex-start;
-gap: 20px;
+  gap: 20px;
 }
 
 .button__app {
@@ -119,7 +119,41 @@ gap: 20px;
   border: 1px solid $--border-dark;
   cursor: pointer;
   @extend %transition-out;
+  &:hover {
+    background-color: $--border-dark;
+    color: $--text-light;
+    @extend %transition-hover;;
+    };
+  &:hover svg path {
+    fill:#E1D4C9;
+    @extend %transition-hover;
+    };
+  &:hover .text__av,
+  &:hover .text__ap {
+      color: $--text-light;
+      @extend %transition-hover;
+      }
 }
+
+// .button__app:hover {
+//   background-color: $--border-dark;
+//   color: $--text-light;
+//   @extend %transition-hover;;
+//   }
+  
+// .button__app:hover svg path {
+//   fill:#E1D4C9;
+//   @extend %transition-hover;
+//   }
+
+// .button__app:hover .text__av,
+// .button__app:hover .text__ap {
+//     color: $--text-light;
+//     @extend %transition-hover;
+//     }
+
+
+
 
 .apple__icon {
   width: 36px;
@@ -140,33 +174,18 @@ gap: 20px;
   color: $--text-dark;
   text-align: center;
   font-family: inherit;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 14px */
+  // font-size: 1rem;
+  // font-style: normal;
+  // font-weight: 600;
+  // line-height: 140%; /* 14px */
+  @include font(1rem, 140%, 600);
   @extend %transition-out;
 }
 
 .text__ap {
   color: $--text-dark;
-font-weight: 600;
-line-height: 150%; /* 24px */
-@extend %transition-out;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  @extend %transition-out;
 }
 
-.button__app:hover {
-  background-color: $--border-dark;
-  color: $--text-light;
-  @extend %transition-hover;;
-  }
-  
-.button__app:hover svg path {
-  fill:#E1D4C9;
-  @extend %transition-hover;
-  }
-
-.button__app:hover .text__av,
-.button__app:hover .text__ap {
-    color: $--text-light;
-    @extend %transition-hover;
-    }

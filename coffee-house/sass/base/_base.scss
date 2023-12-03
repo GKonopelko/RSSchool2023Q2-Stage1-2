@@ -76,17 +76,19 @@ html {
 .main__title {
   width: 800px;
   text-align: center;
-  font-size: 60px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 125%; /* 75px */
+  // font-size: 60px;
+  // font-style: normal;
+  // font-weight: 600;
+  // line-height: 125%; 
+  @include font(6rem, 125%, 600)
 }
 
 .main__title span {
   color: $--text-accent;
-  font-style: italic;
-  font-weight: 600;
-  line-height: 125%;
+  // font-style: italic;
+  // font-weight: 600;
+  // line-height: 125%;
+  @include font(60px, 125%, 600, $style: italic);
 }
 
 h1.offer__title {
