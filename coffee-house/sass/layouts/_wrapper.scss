@@ -1,0 +1,22 @@
+.wrapper1 {
+  max-width: $content-width;
+}
+
+
+
+.wrapper {
+  display: flex;
+  max-width: $desktop-width;
+  padding: 20px 40px 40px 40px;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+  margin: 0 auto;
+  @include media-tablet {
+    max-width: $tablet-width;
+  }
+  @include media-mobile {
+    max-width: $mobile-width;
+    padding: 20px 16px 40px 16px;
+  }
+}
