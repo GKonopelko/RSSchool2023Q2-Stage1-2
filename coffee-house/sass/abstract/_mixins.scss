@@ -16,3 +16,8 @@
 @mixin media-desktop {
   @media(max-width: $desktop-width) { @content; }
 }
+
+@mixin media-content {
+  @media(max-width: $content-width) { @content; }
+}
+

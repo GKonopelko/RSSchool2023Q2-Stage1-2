@@ -1,4 +1,4 @@
-@import "../node_modules/normalize-scss/sass/normalize";
+
 @import "abstract/constants";
 @import "abstract/placeholders";
 @import "abstract/mixins";
@@ -157,25 +157,26 @@ align-self: stretch;
 }
 
 .about__text {
-font-size: 60px;
-font-style: normal;
-font-weight: 600;
-line-height: 125%; /* 75px */
-align-self: stretch;
-width: 1363px
+  @include font(6rem, 125%, 600);
+  align-self: stretch;
 }
 
 .about__text span {
   color: $--text-accent;
-font-style: italic;
+  font-style: italic;
   }
 
 .about__images {
   display: flex;
-max-width: 1360px;
-align-items: flex-start;
-gap: 40px;
-align-self: stretch;
+  // max-width: 1360px;
+  align-items: flex-start;
+  gap: 40px;
+  align-self: stretch;
+  // flex-wrap: wrap;
+  @include media-tablet {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .about__column {
@@ -183,23 +184,43 @@ align-self: stretch;
 flex-direction: column;
 align-items: flex-start;
 gap: 40px;
+width: 100%;
+}
+
+.column2 {
+  @include media-tablet {
+    display:none;
+}
 }
 
 .about__box {
   width: 660px;
-border-radius: 20px;
-position: relative;
-    overflow:hidden; 
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  overflow:hidden; 
+  @include media-tablet {
+    height: 590px;
+    align-self: stretch;
+    width:100%;
+  }
 }
 
 .about1, 
 .about4 {
   height: 590px;
+  @include media-tablet {
+    flex-shrink: 0;
+  }
 }
 
 .about2,
 .about3 {
 height: 430px;
+@include media-tablet {
+  flex-shrink: 0;
+  height: 590px;
+}
 }
 
 
@@ -210,11 +231,10 @@ height: 430px;
   transform:translate(-50%,-50%) scale(100%);
   object-fit:cover;
   @extend %transition-out;
-}
-
-.about__box img:hover {
-  transform:translate(-50%,-50%) scale(90%);
-  @extend %transition-hover;
+  &:hover {
+    transform:translate(-50%,-50%) scale(90%);
+    @extend %transition-hover;
+  }
 }
 
 /* about */
@@ -222,19 +242,23 @@ height: 430px;
 
 .mobile-app {
   display: flex;
-justify-content: center;
-align-items: center;
-gap: 100px;
-align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  align-self: stretch;
 }
 
 .app__container {
   display: flex;
-max-width: 1360px;
-justify-content: center;
-align-items: center;
-gap: 100px;
-flex: 1 0 0;
+  // max-width: 1360px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex: 1 0 0;
+  @include media-content {
+    flex-direction: column;
+  }
 }
 
 .app__offer {
@@ -251,10 +275,7 @@ flex: 1 0 0;
 }
 .app__title {
   color: $--text-accent;
-font-size: 60px;
-font-style: italic;
-font-weight: 600;
-line-height: 125%; /* 75px */
+@include font(6rem, 125%, 600, italic);
 }
 .app__title span {
   color: $--text-dark;
@@ -270,32 +291,36 @@ line-height: 150%; /* 24px */
 /* main */
 
 .menu-wrapper {
-  display: flex;
-width: 1440px;
-padding: 20px 40px 40px 40px;
-flex-direction: column;
-align-items: center;
-margin: 0 auto;
+  // width: 1440px; 
+  gap:0px;
+  margin: auto;
 }
 
 .main {
   display: flex;
-flex-direction: column;
-align-items: center;
-gap: 20px;
-align-self: stretch;
-padding-bottom: 100px;
-padding-top:20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  padding-bottom: 100px;
+  padding-top:20px;
+  @include media-content {
+    align-items: flex-start;
+    gap: 40px;
+  }
 }
 
 .main__container {
   display: flex;
-  max-width: 1360px;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
   align-self: stretch;
+  @include media-content {
+    align-items: center;
+  }
 }
 
 .main__container__offer {
@@ -306,11 +331,27 @@ gap: 40px;
 align-self: stretch;
 }
 
+.main__title {
+  width: 800px;
+  text-align: center; 
+  @include font(6rem, 125%, 600);
+  @include media-content {
+    width: 100%;
+  };
+  & span {
+  color: $--text-accent;
+  @include font(60px, 125%, 600, $style: italic);
+  }
+}
+
 .main__tabs {
   display: flex;
 justify-content: center;
 align-items: center;
 gap: 16px;
+@include media-content {
+  gap: 19px;
+};
 }
 
 .tab-item {
@@ -375,12 +416,15 @@ gap: 16px;
 
 .main__container__grid {
   display: flex;
-  width: 1360px;
+  height: 1052px;
+  overflow: hidden;
+  width: 100%;
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
   gap: 40px;
   flex-wrap: wrap;
+  align-self: stretch;
 }
 
 .card__preview {
@@ -460,4 +504,20 @@ gap: 16px;
   font-weight: 600;
   line-height: 125%; 
 }
+
+.refresh {
+  display: none;
+  padding: 2rem;
+  @include media-content {
+    display: flex;
+  }
+
+}
+
+.button-icon-dark_refresh {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
 

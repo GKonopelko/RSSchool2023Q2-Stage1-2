@@ -39,12 +39,11 @@
 .offer__title {
   align-self: stretch;
   color: $--text-accent;
-  @include font(7.2rem, 105%, 600, italic)
-}
-
-.offer__title span {
-  color: $--text-light;
-  font-style: normal;
+  @include font(7.2rem, 105%, 600, italic);
+  & span {
+    color: $--text-light;
+    font-style: normal;
+  }
 }
 
 .offer__text {

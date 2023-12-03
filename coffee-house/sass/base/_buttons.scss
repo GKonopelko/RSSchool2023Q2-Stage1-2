@@ -71,8 +71,12 @@ position: relative;
     };
   &:hover svg path {
       stroke: $--background-body;
-      @extend %transition-hover;
+      @extend %transition-out;
     }
+  &.refresh:hover svg {
+    fill: $--background-container;
+    @extend %transition-hover;
+  };
 }
 
 
@@ -107,6 +111,9 @@ background: $--border-dark;
 .app__buttons {
   display: flex;
   gap: 20px;
+  @include media-tablet {
+    align-items: flex-start;
+  }
 }
 
 .button__app {
@@ -134,25 +141,6 @@ background: $--border-dark;
       @extend %transition-hover;
       }
 }
-
-// .button__app:hover {
-//   background-color: $--border-dark;
-//   color: $--text-light;
-//   @extend %transition-hover;;
-//   }
-  
-// .button__app:hover svg path {
-//   fill:#E1D4C9;
-//   @extend %transition-hover;
-//   }
-
-// .button__app:hover .text__av,
-// .button__app:hover .text__ap {
-//     color: $--text-light;
-//     @extend %transition-hover;
-//     }
-
-
 
 
 .apple__icon {
