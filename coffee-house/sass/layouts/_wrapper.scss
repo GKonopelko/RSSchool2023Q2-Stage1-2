@@ -1,8 +1,3 @@
-.wrapper1 {
-  max-width: $content-width;
-}
-
-
 
 .wrapper {
   display: flex;
@@ -12,11 +7,11 @@
   align-items: center;
   gap: 100px;
   margin: 0 auto;
-  @include media-tablet {
+  @include media-992 {
     max-width: $tablet-width;
-  }
-  @include media-mobile {
+  };
+  @include media-750 {
     max-width: $mobile-width;
     padding: 20px 16px 40px 16px;
-  }
+  };
 }

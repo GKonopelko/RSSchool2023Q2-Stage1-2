@@ -1,4 +1,4 @@
-@import "../node_modules/normalize-scss/sass/normalize";
+
 @import "abstract/constants";
 @import "abstract/placeholders";
 @import "abstract/mixins";
@@ -46,20 +46,21 @@
   align-self: stretch;
   text-align: center;
   @include font(6rem, 125%, 600);
-}
-
-.favorite-coffee__title span {
+  @include media-750 {
+    @include font(3.2rem, 125%, 600, normal);
+  };
+  & span {
   color: $--text-accent;
   font-style: italic;
-
+  }
 }
 
 .favorite-coffee__slider {
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  width: 100%;
 }
 
 .slider__pictures {
@@ -70,41 +71,44 @@
   align-self: stretch;
 }
 
-
-
 .row-slider {
   display: flex;
-min-width: 480px;
-max-width: 1152px;
-justify-content: flex-end;
-align-items: flex-start;
-flex: 1 0 0;
+  // min-width: 480px;
+  // max-width: 1152px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
 }
 
 .slide1 {
   display: flex;
-  width: 1152px;
-  min-width: 480px;
-  max-width: 1162px;
+  
+  // width: 1152px;
+  // min-width: 480px;
+  // max-width: 1162px;
   flex-direction: column;
   align-items: center;
 }
+
 .slide__content {
   display: flex;
-width: 480px;
-max-width: 480px;
-flex-direction: column;
-align-items: center;
-gap: 20px;
+  // width: 100%;
+  max-width: 480px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
 }
 
 .coffee-slider-1 {
-  width: 480px;
-height: 480px;
-background: url(../images/coffee-slider-1.png),$--background-body 50% / cover no-repeat;
-background-size: 100%;
-background-position: center; 
+  height: 480px;
+    @include media-750 {  
+      height: 348px;
+    };
+  }
 
+.coffee-slider-1 img {
+  height: 100%;
 }
 
 .slider__description {
@@ -157,25 +161,28 @@ align-self: stretch;
 }
 
 .about__text {
-font-size: 60px;
-font-style: normal;
-font-weight: 600;
-line-height: 125%; /* 75px */
-align-self: stretch;
-width: 1363px
+  @include font(6rem, 125%, 600);
+  align-self: stretch;
+  letter-spacing: -0.1px;
+  @include media-750 {  
+    @include font(3.2rem, 125%, 600);
+  };
 }
 
 .about__text span {
   color: $--text-accent;
-font-style: italic;
+  font-style: italic;
   }
 
 .about__images {
   display: flex;
-max-width: 1360px;
-align-items: flex-start;
-gap: 40px;
-align-self: stretch;
+  align-items: flex-start;
+  gap: 40px;
+  align-self: stretch;
+  @include media-992 {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .about__column {
@@ -183,23 +190,43 @@ align-self: stretch;
 flex-direction: column;
 align-items: flex-start;
 gap: 40px;
+width: 100%;
+}
+
+.column2 {
+  @include media-992 {
+    display:none;
+}
 }
 
 .about__box {
   width: 660px;
-border-radius: 20px;
-position: relative;
-    overflow:hidden; 
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  overflow:hidden; 
+  @include media-992 {
+    height: 590px;
+    align-self: stretch;
+    width:100%;
+  }
 }
 
 .about1, 
 .about4 {
   height: 590px;
+  @include media-992 {
+    flex-shrink: 0;
+  }
 }
 
 .about2,
 .about3 {
 height: 430px;
+@include media-992 {
+  flex-shrink: 0;
+  height: 590px;
+}
 }
 
 
@@ -210,31 +237,47 @@ height: 430px;
   transform:translate(-50%,-50%) scale(100%);
   object-fit:cover;
   @extend %transition-out;
+ 
 }
 
-.about__box img:hover {
-  transform:translate(-50%,-50%) scale(90%);
-  @extend %transition-hover;
+@media (hover:hover) {
+  .about__box img {
+    &:hover {
+      transform:translate(-50%,-50%) scale(90%);
+    }
+  }
 }
+
 
 /* about */
 /* app */
 
 .mobile-app {
   display: flex;
-justify-content: center;
-align-items: center;
-gap: 100px;
-align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  align-self: stretch;
+  @include media-750 {
+    align-self:auto;
+    width: 100%;
+  }
 }
 
 .app__container {
   display: flex;
-max-width: 1360px;
-justify-content: center;
-align-items: center;
-gap: 100px;
-flex: 1 0 0;
+  // max-width: 1360px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex: 1 0 0;
+  @include media-1360 {
+    flex-direction: column;
+  }
+  @include media-750 {
+    gap: 40px;
+  }
 }
 
 .app__offer {
@@ -243,19 +286,29 @@ flex: 1 0 0;
   align-items: flex-start;
   gap: 40px;
   flex: 1 0 0;
+  width: 100%;
 }
+
 .app__screens {
   width: 630px;
   height: 630px;
   background: url(../images/mobile-screens.png), $--background-body 50% / cover no-repeat;
+  @include media-750 {
+    max-width: 100%;
+    max-height: 348px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
+
 .app__title {
   color: $--text-accent;
-font-size: 60px;
-font-style: italic;
-font-weight: 600;
-line-height: 125%; /* 75px */
+  @include font(6rem, 125%, 600, italic);
+  @include media-750 {  
+    @include font(3.2rem, 125%, 600);
+};
 }
+
 .app__title span {
   color: $--text-dark;
 font-style: normal;
@@ -270,32 +323,36 @@ line-height: 150%; /* 24px */
 /* main */
 
 .menu-wrapper {
-  display: flex;
-width: 1440px;
-padding: 20px 40px 40px 40px;
-flex-direction: column;
-align-items: center;
-margin: 0 auto;
+  // width: 1440px; 
+  gap:0px;
+  margin: auto;
 }
 
 .main {
   display: flex;
-flex-direction: column;
-align-items: center;
-gap: 20px;
-align-self: stretch;
-padding-bottom: 100px;
-padding-top:20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  padding-bottom: 100px;
+  padding-top:20px;
+  @include media-1360 {
+    align-items: flex-start;
+    gap: 40px;
+  }
 }
 
 .main__container {
   display: flex;
-  max-width: 1360px;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
   align-self: stretch;
+  @include media-1360 {
+    align-items: center;
+  }
 }
 
 .main__container__offer {
@@ -306,11 +363,38 @@ gap: 40px;
 align-self: stretch;
 }
 
+.main__title {
+  width: 800px;
+  text-align: center; 
+  @include font(6rem, 125%, 600);
+  @include media-1360 {
+    width: 100%;
+  };
+  @include media-750 {
+    align-self: stretch;
+    @include font(3.2rem, 125%, 600);
+  };
+  & span {
+  color: $--text-accent;
+  @include font(60px, 125%, 600, $style: italic);
+  @include media-750 {
+    @include font(3.2rem, 125%, 600);
+  };
+  }
+}
+
 .main__tabs {
   display: flex;
 justify-content: center;
 align-items: center;
 gap: 16px;
+width: 100%;
+@include media-1360 {
+  gap: 16px;
+};
+@include media-750 {
+  gap: 8px;
+};
 }
 
 .tab-item {
@@ -329,11 +413,16 @@ gap: 16px;
   cursor:auto;
 }
 
-.tab-item.active-tab,
-.tab-item:hover {
+.tab-item.active-tab {
   background: $--background-container;
   @extend %transition-hover;
+}
+
+@media (hover:hover) {
+  .tab-item:hover {
+    background: $--background-container;
   }
+} 
 
 .tab-item__icon {
   display: flex;
@@ -342,12 +431,23 @@ gap: 16px;
   align-items: center;border-radius: 100px;
   background: $--border-light;
   @extend %transition-out; 
+  @include media-750 {
+    padding: 5px 6px;
+  };
+  @include media-992 {
+    padding: 6px 6px;
+  };
 }
 
-.active-tab .tab-item__icon,
-.tab-item:hover .tab-item__icon {
+.active-tab .tab-item__icon {
   background: $--background-body;
   @extend %transition-hover;
+}
+
+@media (hover:hover) {
+  .tab-item:hover .tab-item__icon {
+    background: $--background-body;
+  }
 }
 
 
@@ -365,22 +465,33 @@ gap: 16px;
   transition: all 0.2s ease-in-out;
 }
 
-.active-tab .tab-item__text,
-.tab-item:hover .tab-item__text {
+.active-tab .tab-item__text {
   color: $--text-light;
   @extend %transition-hover;
+}
+
+@media (hover:hover) {
+  .tab-item:hover .tab-item__text {
+    color: $--text-light;
+  }
 }
 
 /* grid */
 
 .main__container__grid {
   display: flex;
-  width: 1360px;
+  height: 1052px;
+  overflow: hidden;
+  width: 100%;
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
   gap: 40px;
   flex-wrap: wrap;
+  align-self: stretch;
+  @include media-750 {
+    height: 2144px;
+  };
 }
 
 .card__preview {
@@ -414,10 +525,13 @@ gap: 16px;
   @extend %transition-out;
 }
 
-.card__preview:hover .box img {
-  transform:translate(-50%,-50%) scale(90%);
-  @extend %transition-hover;
+@media (hover:hover) {
+  .card__preview:hover .box img {
+    transform:translate(-50%,-50%) scale(90%);
+  }
 }
+
+
 
 .card__description {
   display: flex;
@@ -460,4 +574,20 @@ gap: 16px;
   font-weight: 600;
   line-height: 125%; 
 }
+
+.refresh {
+  display: none;
+  padding: 2rem;
+  @include media-1360 {
+    display: flex;
+  }
+
+}
+
+.button-icon-dark_refresh {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
 
