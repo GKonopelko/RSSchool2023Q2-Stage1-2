@@ -46,9 +46,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* img {
-  vertical-align: top;
-} */
 
 /*--------------------*/
 /* ********* */
@@ -73,35 +70,3 @@ html {
 }
 
 
-.main__title {
-  width: 800px;
-  text-align: center;
-  // font-size: 60px;
-  // font-style: normal;
-  // font-weight: 600;
-  // line-height: 125%; 
-  @include font(6rem, 125%, 600)
-}
-
-.main__title span {
-  color: $--text-accent;
-  // font-style: italic;
-  // font-weight: 600;
-  // line-height: 125%;
-  @include font(60px, 125%, 600, $style: italic);
-}
-
-h1.offer__title {
-  align-self: stretch;
-  color: $--text-accent;
-  font-feature-settings: "clig" off, "liga" off;
-  font-size: 72px;
-  font-style: italic;
-  font-weight: 600;
-  line-height: 105%; /* 75.6px */
-}
-
-h1.offer__title span {
-  color: $--text-light;
-  font-style: normal;
-}

@@ -21,9 +21,11 @@
   background-repeat: no-repeat;
   background-position: center; 
   background-size: cover; 
-  @include media-tablet {
-    // max-width: $tablet-width;
+  @include media-992 {
     padding: 100px 60px;
+  }
+  @include media-750 {
+    padding: 60px 16px;
   }
 }
 
@@ -34,17 +36,23 @@
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
+  @include media-750 {
+    width:100%;
+  }
+  
 }
 
 .offer__title {
   align-self: stretch;
   color: $--text-accent;
-  @include font(7.2rem, 105%, 600, italic)
-}
-
-.offer__title span {
-  color: $--text-light;
-  font-style: normal;
+  @include font(7.2rem, 105%, 600, italic);
+  & span {
+    color: $--text-light;
+    font-style: normal;
+  };
+  @include media-750 {
+    @include font(4.2rem, 115%, 600, italic);
+  }
 }
 
 .offer__text {
