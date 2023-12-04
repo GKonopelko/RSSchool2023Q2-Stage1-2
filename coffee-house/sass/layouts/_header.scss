@@ -39,7 +39,7 @@
   border-radius: 100px;
   border: 1px solid $--border-dark;
   display:none;
-  @include media-tablet {
+  @include media-992 {
     display:flex;
   }
 }
@@ -68,7 +68,7 @@
   gap: 40px;
   flex: 1 0 0;
   align-self: stretch;
-  @include media-tablet {
+  @include media-992 {
   display:none;
 }
 }
@@ -112,14 +112,19 @@ a {
 	transition: all 0.2s ease-out; 
 }
 
-.menu__item:hover:after,
 .menu__item:focus:after {
 	width: 100%; 
   @extend %transition-hover;
 }
 
+@media (hover:hover) {
+  .menu__item:hover:after {
+	width: 100%; 
+}
+}
+
 .coffee-menu {
-  @include media-tablet {
+  @include media-992 {
     display:none;
   }
 }
@@ -127,7 +132,7 @@ a {
 .coffee-menu a {
   display: flex;
   gap: 10px;
-  @include media-tablet {
+  @include media-992 {
     display:none;
   }
 }

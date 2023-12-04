@@ -17,11 +17,18 @@
   gap: 100px;
   border-radius: 40px;
   background: $--background-container;
-  @include media-content {
+  @include media-992 {
     padding: 100px 60px;
     flex-direction: column;
     align-self: stretch;
     align-items: flex-start;
+  }
+  @include media-750 {
+    padding: 60px 16px;
+    flex-direction: column;
+    align-self: stretch;
+    align-items: center;
+    gap: 40px;
   }
 }
 
@@ -32,7 +39,7 @@
   align-items: flex-start;
   gap: 40px;
   flex: 1 0 0;
-  @include media-tablet {
+  @include media-992 {
     align-self: stretch;
   }
 }
@@ -40,6 +47,10 @@
 .footer__text {
   color: $--text-light;
   @include font(6rem, 125%, 600);
+  @include media-750 {
+    align-self: stretch;
+    @include font(3.2rem, 125%, 600);
+  };
   & span {
     color: $--text-accent;
     font-style: italic;
@@ -63,19 +74,27 @@
   cursor: pointer;
   background-color: $--background-container;
   @extend %transition-out;
-  &:hover {
-    background-color: $--background-body;
-    @extend %transition-hover;
-  };
-  &:hover svg {
-    transform: translate(-5%, -5%);
-    @extend %transition-hover;
-  };
-  &:hover svg path {
-    stroke: $--text-dark;
-    @extend %transition-hover;
+  
+}
+
+@media (hover:hover) {
+  .button-icon-light {
+    &:hover {
+      background-color: $--background-body;
+      // @extend %transition-hover;
+    };
+    &:hover svg {
+      transform: translate(-5%, -5%);
+      // @extend %transition-hover;
+    };
+    &:hover svg path {
+      stroke: $--text-dark;
+      // @extend %transition-hover;
+    }
   }
 }
+
+
 
 
 .btn-icon {
@@ -91,7 +110,7 @@
   align-items: flex-start;
   gap: 40px;
   flex: 1 0 0;
-  @include media-tablet {
+  @include media-992 {
     align-self: stretch;
   }
 }
@@ -152,10 +171,16 @@
 	@extend %transition-out; 
 }
 
-.link-contact:hover:after,
 .link-contact:focus:after {
 	width: 100%; 
   @extend %transition-hover;
+}
+
+@media (hover:hover) {
+  .link-contact:hover:after {
+	width: 100%; 
+  // @extend %transition-hover;
+}
 }
 
 /* footer */
