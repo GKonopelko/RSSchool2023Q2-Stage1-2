@@ -7,10 +7,18 @@
   align-items: center;
   gap: 100px;
   margin: 0 auto;
-  @include media-992 {
+  // @include media-992 {
+  //   max-width: $tablet-width;
+  // };
+  // @include media-750 {
+  //   max-width: $mobile-width;
+  //   padding: 20px 16px 40px 16px;
+  // };
+
+  @include media-tablet768 {
     max-width: $tablet-width;
   };
-  @include media-750 {
+  @include media-mobile380 {
     max-width: $mobile-width;
     padding: 20px 16px 40px 16px;
   };

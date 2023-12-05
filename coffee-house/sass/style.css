@@ -127,6 +127,16 @@ html {
     left: 32%;
   }
 }
+@media (max-width: 768px) {
+  .offer__button img {
+    opacity: 1;
+  }
+  .offer__button .offer__button__text {
+    display: block;
+    position: absolute;
+    left: 32%;
+  }
+}
 .button-icon-dark {
   display: flex;
   width: 60px;
@@ -259,12 +269,12 @@ html {
   gap: 100px;
   margin: 0 auto;
 }
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .wrapper {
     max-width: 768px;
   }
 }
-@media (max-width: 750px) {
+@media (max-width: 380px) {
   .wrapper {
     max-width: 380px;
     padding: 20px 16px 40px 16px;

@@ -34,10 +34,6 @@ position: relative;
 	@extend %transition-out;
 }
 
-// .offer__button:hover img {
-// 	opacity: 1; 
-//   @extend %transition-hover; 
-// }
 
 @media (hover:hover) {
   .offer__button:hover img {
@@ -55,7 +51,17 @@ position: relative;
   }
 }
 
-
+@include media-tablet768 {
+  .offer__button img {
+    opacity: 1; 
+    }
+  .offer__button
+  .offer__button__text {
+      display: block;
+      position: absolute;
+      left: 32%; 
+    }
+}
 
 .button-icon-dark {
   display: flex;
