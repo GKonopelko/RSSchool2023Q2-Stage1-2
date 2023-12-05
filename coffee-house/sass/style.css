@@ -988,7 +988,7 @@ a {
   gap: 40px;
   align-self: stretch;
 }
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .about__images {
     flex-direction: column;
     align-items: center;
@@ -1003,7 +1003,7 @@ a {
   width: 100%;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .column2 {
     display: none;
   }
@@ -1016,7 +1016,7 @@ a {
   position: relative;
   overflow: hidden;
 }
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   .about__box {
     height: 590px;
     align-self: stretch;
