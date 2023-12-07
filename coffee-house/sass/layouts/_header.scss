@@ -8,7 +8,24 @@
   align-items: center;
   gap: 20px;
   align-self: stretch;
-  width:100%
+  width:100%;
+  &._locked {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 20;
+    width: 100%;
+    background-color: $--background-body;
+    padding: 20px 40px; 
+  }
+
+
+}
+
+.body._hidden {
+  overflow: hidden;
+  // height: 100%;
+  // position: relative;
 }
 
 .header__container {
@@ -17,13 +34,18 @@
   justify-content: center;
   align-items: center;
   align-self: stretch;
+
 }
+
+
 
 .header-menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+  
+
 }
 
 .logo {
@@ -39,8 +61,29 @@
   border-radius: 100px;
   border: 1px solid $--border-dark;
   display:none;
-  @include media-992 {
+  background-color: $--background-body;
+  @extend %transition-out;
+  @include media-tablet768 {
     display:flex;
+  }
+  &:hover {
+    background-color: $--border-dark;
+    @extend %transition-hover;
+    & .burger__button_vector1, 
+      .burger__button_vector2 {
+      background-color: $--background-body;
+      @extend %transition-hover;
+    }
+  }
+  &._active .burger__button_vector1 {
+    top: 50%;
+    transform: rotate(-45deg) translate(0%, 0%);
+    @extend %transition-hover;
+  } 
+  &._active .burger__button_vector2 {
+    top: 50%;
+    transform: rotate(45deg) translate(0%, 0%);
+    @extend %transition-hover;
   }
 }
 
@@ -52,13 +95,27 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  position: relative;
 }
 
-.burger__button_vector {
+.burger__button_vector1 {
+  bottom: 35%;
   display: block;
   width: 16px;
   height: 2px;
   background-color: $--text-dark;
+  position: absolute;
+  @extend %transition-out;
+}
+
+.burger__button_vector2 {
+  top: 35%;
+  display: block;
+  width: 16px;
+  height: 2px;
+  background-color: $--text-dark;
+  position: absolute;
+  @extend %transition-out;
 }
 
 .nav {
@@ -67,16 +124,50 @@
   align-items: center;
   gap: 40px;
   flex: 1 0 0;
+  margin-left: -35px;
   align-self: stretch;
-  @include media-992 {
-  display:none;
-}
+  @extend %transition-hover;
+  @include media-tablet768 {
+  position: absolute;
+  left:1000px;
+  width:0px;  
+  &._active {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 100%;
+    margin: 0;
+    top:90px;
+    left: 0;
+    width:100%;
+    height: 100vh;
+    z-index: 20;
+    background-color: $--background-body;
+  }
+  };
+
 }
 
 .menu__list {
   display: flex;
   list-style: none;
   gap: 40px;
+  width: 100%;
+  position: relative;
+  justify-content: center;
+  @include media-tablet768 {
+    opacity: 0;
+    position: fixed;
+    top:160px;
+    left:0px;
+    gap:60px;
+    // padding-top:160px;
+    flex-direction: column;
+    align-self: stretch;
+    align-items: center;
+    &._active {
+      opacity: 1;
+    }
+    };
 }
 
 a {
@@ -86,16 +177,22 @@ a {
 
 .menu__item {
   @include font(1.6rem, 150%, 600);
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  position: relative;
   & a {
     color: $--text-dark;
     font-family: Inter;
     @include font(1.6rem, 150%, 600);
+    @include media-tablet768 {
+      @include font(3.2rem, 125%, 600);
+    }
   };
+  @include media-tablet768 {
+    width: fit-content;
+  }
 }
 
 
@@ -106,7 +203,7 @@ a {
   transform: translateX(-50%);
   bottom: 0px;
 	width: 0;
-	height: 2px;
+	height: 0px;
 	background: #403F3D;
 	content: "";
 	transition: all 0.2s ease-out; 
@@ -120,26 +217,48 @@ a {
 @media (hover:hover) {
   .menu__item:hover:after {
 	width: 100%; 
+  height: 2px;
 }
 }
 
 .coffee-menu {
-  @include media-992 {
-    display:none;
+  position: absolute;
+  right: 0;
+  @include media-tablet768 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    gap: 10px;
   }
 }
 
 .coffee-menu a {
   display: flex;
+  position: relative;
+  right: 0px;
+  top:2px;
   gap: 10px;
-  @include media-992 {
-    display:none;
+  @include media-tablet768 {
+    display: flex;
+    position: initial;
+    right: 0px;
+    top:2px;
+    gap: 20px;
+    color: $--text-dark;
+    font-family: Inter;
+    @include font(3.2rem, 125%, 600);
   }
 }
 
 .coffee-menu img {
   width: 20px;
   height: 20px;
+  @include media-tablet768{
+    width: 40px;
+  height: 40px;
+  }
 }
 
 .nonactive {
