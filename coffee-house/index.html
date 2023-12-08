@@ -66,14 +66,35 @@
           <div class="favorite-coffee__title" id="favorite">Choose your <span>favorite</span> coffee</div>
           <div class="favorite-coffee__slider">
             <div class="slider__pictures">
-              <div class="button-icon-dark">
+              <div class="button-icon-dark" id="button-left">
                <div class="arrow__left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
               </svg></div> 
               </div>
-              <div class="row-slider">
-                <div class="slide1">
-                  <div class="slide__content">
+              <div class="slaider__container">
+                <div class="slider__wrapper" id="slider__wrapper">
+                <div class="slider" id="slider">
+                  <div class="slide__content" id="slide_left">
+                    <div class="coffee-slider-1">
+                      <img src="images/coffee-slider-1.png" alt="coffee-1">
+                    </div>
+                    <div class="slider__description">
+                      <div class="slider__title">S’mores Frappuccino</div>
+                      <div class="slider__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</div>
+                      <div class="slider__price">$5.50</div>
+                    </div>
+                  </div>
+                  <div class="slide__content" id="slide_active">
+                    <div class="coffee-slider-1">
+                      <img src="images/coffee-slider-1.png" alt="coffee-1">
+                    </div>
+                    <div class="slider__description">
+                      <div class="slider__title">S’mores Frappuccino</div>
+                      <div class="slider__text">This new drink takes an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</div>
+                      <div class="slider__price">$5.50</div>
+                    </div>
+                  </div>
+                  <div class="slide__content" id="slide_right">
                     <div class="coffee-slider-1">
                       <img src="images/coffee-slider-1.png" alt="coffee-1">
                     </div>
@@ -85,7 +106,9 @@
                   </div>
                 </div>
               </div>
-              <div class="button-icon-dark">
+              </div>
+              
+              <div class="button-icon-dark" id="button-right">
                 <div class="arrow__right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg></div> 

@@ -17,9 +17,10 @@
     width: 100%;
     background-color: $--background-body;
     padding: 20px 40px; 
+    @include media-mobile380 {
+      padding: 20px 20px;
+    }
   }
-
-
 }
 
 .body._hidden {
@@ -129,19 +130,22 @@
   @extend %transition-hover;
   @include media-tablet768 {
   position: absolute;
-  left:1000px;
-  width:0px;  
+  top:90px;
+  right: -1000px;
+  width:0px; 
+  height: 100vh;
+  transition: all .4s ease-out;
+  background-color: $--background-body;
+  z-index: 20;
   &._active {
-    display: flex;
+    // display: flex;
     flex-direction: column;
     flex: 0 1 100%;
     margin: 0;
     top:90px;
-    left: 0;
-    width:100%;
-    height: 100vh;
-    z-index: 20;
-    background-color: $--background-body;
+    right: 0;
+    width:100%;    
+    transition: all .4s ease-out;
   }
   };
 
@@ -154,18 +158,28 @@
   width: 100%;
   position: relative;
   justify-content: center;
+  transition: all .4s ease-out;
   @include media-tablet768 {
-    opacity: 0;
+    // opacity: 0;
     position: fixed;
-    top:160px;
-    left:0px;
-    gap:60px;
+    // top:160px;
+    // left:0px;
+    // gap:60px;
+    transition: all .4s ease-out;
     // padding-top:160px;
     flex-direction: column;
     align-self: stretch;
     align-items: center;
+    width: 0;
     &._active {
+      // opacity: 0;
+    position: fixed;
+    top:160px;
+    // left:0px;
+      gap:60px;
       opacity: 1;
+      transition: all .4s ease-out;
+      width: 100%;
     }
     };
 }
@@ -176,6 +190,7 @@ a {
 }
 
 .menu__item {
+  @extend %transition-out;
   @include font(1.6rem, 150%, 600);
   display: flex;
   flex-direction: column;
@@ -187,6 +202,7 @@ a {
     font-family: Inter;
     @include font(1.6rem, 150%, 600);
     @include media-tablet768 {
+      transition: all .4s ease-out;
       @include font(3.2rem, 125%, 600);
     }
   };
@@ -238,13 +254,13 @@ a {
   display: flex;
   position: relative;
   right: 0px;
-  top:2px;
+  top:0px;
   gap: 10px;
   @include media-tablet768 {
     display: flex;
     position: initial;
     right: 0px;
-    top:2px;
+    top:0px;
     gap: 20px;
     color: $--text-dark;
     font-family: Inter;
@@ -257,7 +273,7 @@ a {
   height: 20px;
   @include media-tablet768{
     width: 40px;
-  height: 40px;
+    height: 40px;
   }
 }
 
@@ -270,11 +286,30 @@ pointer-events: none;
 	position: absolute;
 	left: 50%;
   transform: translateX(-50%);
-  bottom: -2px;
+  bottom: 0px;
 	width: 100%;
 	height: 2px;
 	background: #403F3D;
 	content: "";
+}
+
+
+@include media-tablet768 {
+  .nonactive {
+    pointer-events: all;
+    &:after {
+      display: block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0px;
+      width: 0;
+      height: 0px;
+      background: #403F3D;
+      content: "";
+      transition: all 0.2s ease-out; 
+    }
+  }
 }
 
 /* header */
