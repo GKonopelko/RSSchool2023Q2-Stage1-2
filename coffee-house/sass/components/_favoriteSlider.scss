@@ -98,12 +98,14 @@
   height: 4px;
   border-radius: 100px;
   background: $--border-light;
-
 }
 
-.active {
-background: $--border-dark;
+.control__line {
+  width: 0%;
+  height: 100%;
+  background: $--border-dark;
 }
+
 
 .slaider__container {
   display: flex;
@@ -128,7 +130,11 @@ background: $--border-dark;
     width: 348px;
   };
   margin: 0;
+  scroll-snap-type: x;
+  scroll-behavior: smooth;
+  
 }
+
 
 .slider {
   display: flex;
@@ -136,8 +142,103 @@ background: $--border-dark;
   align-items: center;
   justify-content: center;
   position: relative;
-  left: -480px;
+  left: 0px;
+  @extend %transition-hover; 
 }
+
+// @keyframes left {
+//   0% {left: -480px}
+//   100% {left: 0px;}
+// }
+// .animation-left {
+//   animation-name: left;
+//   animation-duration: 2s;
+//   animation-timing-function: linear;
+//   animation-iteration-count: infinite;
+// }
+
+@keyframes right0 {
+  from {left: 0px;}
+  to {left: -480px;}
+}
+@keyframes right1 {
+  from {left: -480px;}
+  to {left: -960px;}
+}
+@keyframes right2 {
+  from {left: -960px;}
+  to {left: 0px;}
+}
+
+@keyframes inf {
+  0% {left: -960;}
+  50% {left: -480px;}
+  100% {left: -0px;}
+}
+
+.animation-right0 {
+  animation: right0 linear 2s forwards;
+}
+.animation-right1 {
+  animation: right1 linear 2s forwards;
+}
+.animation-right2 {
+  animation: right2 linear 2s forwards;
+}
+
+.animation-left0 {
+  animation: right2 linear 2s forwards reverse;
+}
+.animation-left1 {
+  animation: right1 linear 2s forwards reverse;
+}
+.animation-left2 {
+  animation: right0 linear 2s forwards reverse;
+}
+
+.animation-infinite {
+  animation-iteration-count: 1;
+  animation-name: inf;
+  animation-duration: 6s;
+  // animation-timing-function: steps;
+  animation-fill-mode: both;
+}
+
+// .animation-right0, 
+// .animation-right1,
+// .animation-right1 {
+//   animation-name: right0, right, right2;
+//   animation-duration: 2s;
+//   animation-timing-function: linear;
+//   animation-iteration-count: 1;
+//   // animation-iteration-count: infinite;
+//   animation-fill-mode: forwards;
+// }
+
+.slider:hover.animation-right0,
+.slider:hover.animation-right1,
+.slider:hover.animation-right2, {
+  animation-play-state: paused;
+}
+
+
+
+.animation-line {
+  animation-name: rightLine;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  // animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  // animation-direction: alternate-reverse;
+  // animation-play-state: paused;
+  // animation-delay: 1s;
+}
+
+
+
+
+
 
 .slide__content {
   display: flex;
@@ -148,14 +249,14 @@ background: $--border-dark;
   align-self: stretch;
 }
 
-.coffee-slider-1 {
+.slide__image {
   height: 480px;
     @include media-750 {  
       height: 348px;
     };
   }
 
-.coffee-slider-1 img {
+.slide__image img {
   height: 100%;
 }
 

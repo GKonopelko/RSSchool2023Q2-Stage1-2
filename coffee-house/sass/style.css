@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.active-tab .tab-item__text, .active-tab .tab-item__icon, .tab-item.active-tab, .link-contact:focus:after, .menu__item:focus:after, .nav, .burger__button._active .burger__button_vector2, .burger__button._active .burger__button_vector1, .burger__button:hover .burger__button_vector1,
+.active-tab .tab-item__text, .active-tab .tab-item__icon, .tab-item.active-tab, .slider, .link-contact:focus:after, .menu__item:focus:after, .nav, .burger__button._active .burger__button_vector2, .burger__button._active .burger__button_vector1, .burger__button:hover .burger__button_vector1,
 .burger__button:hover .burger__button_vector2, .burger__button:hover {
   transition: all 0.5s ease-out;
 }
@@ -942,7 +942,9 @@ a {
   background: #C1B6AD;
 }
 
-.active {
+.control__line {
+  width: 0%;
+  height: 100%;
   background: #665F55;
 }
 
@@ -966,6 +968,8 @@ a {
   width: 480px;
   align-items: center;
   margin: 0;
+  scroll-snap-type: x;
+  scroll-behavior: smooth;
 }
 @media (max-width: 380px) {
   .slider__wrapper {
@@ -979,7 +983,87 @@ a {
   align-items: center;
   justify-content: center;
   position: relative;
-  left: -480px;
+  left: 0px;
+}
+
+@keyframes right0 {
+  from {
+    left: 0px;
+  }
+  to {
+    left: -480px;
+  }
+}
+@keyframes right1 {
+  from {
+    left: -480px;
+  }
+  to {
+    left: -960px;
+  }
+}
+@keyframes right2 {
+  from {
+    left: -960px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@keyframes inf {
+  0% {
+    left: -960;
+  }
+  50% {
+    left: -480px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+.animation-right0 {
+  animation: right0 linear 2s forwards;
+}
+
+.animation-right1 {
+  animation: right1 linear 2s forwards;
+}
+
+.animation-right2 {
+  animation: right2 linear 2s forwards;
+}
+
+.animation-left0 {
+  animation: right2 linear 2s forwards reverse;
+}
+
+.animation-left1 {
+  animation: right1 linear 2s forwards reverse;
+}
+
+.animation-left2 {
+  animation: right0 linear 2s forwards reverse;
+}
+
+.animation-infinite {
+  animation-iteration-count: 1;
+  animation-name: inf;
+  animation-duration: 6s;
+  animation-fill-mode: both;
+}
+
+.slider:hover.animation-right0,
+.slider:hover.animation-right1,
+.slider:hover.animation-right2 {
+  animation-play-state: paused;
+}
+
+.animation-line {
+  animation-name: rightLine;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .slide__content {
@@ -991,16 +1075,16 @@ a {
   align-self: stretch;
 }
 
-.coffee-slider-1 {
+.slide__image {
   height: 480px;
 }
 @media (max-width: 750px) {
-  .coffee-slider-1 {
+  .slide__image {
     height: 348px;
   }
 }
 
-.coffee-slider-1 img {
+.slide__image img {
   height: 100%;
 }
 
