@@ -20,40 +20,45 @@
             </div>
             <div class="burger__button">
               <div class="burger__button_icon">
-                <span class="burger__button_vector"></span>
-                <span class="burger__button_vector"></span>
+                <span class="burger__button_vector1"></span>
+                <span class="burger__button_vector2"></span>
               </div>
             </div>
-            <div class="nav">
+            <div class="nav ">
               <ul class="menu__list">
                 <li class="menu__item"><a href="#favorite">Favorite coffee</a></li>
                 <li class="menu__item"><a href="#about">About</a></li>
                 <li class="menu__item"><a href="#mobile">Mobile app</a></li>
                 <li class="menu__item"><a href="#contact">Contact us</a></li>
+                <li class="menu__item coffee-menu">
+                  <a href="menu.html">
+                    <div class="menu__text">Menu </div>
+                    <img src="images/coffee-cup.svg" alt="coffee-cup">
+                  </a>
+                </li>
               </ul>
-            </div>
-            <div class="menu__item coffee-menu">
-              <a href="menu.html">
-                <div class="menu__text">Menu </div>
-                              
-                <img src="images/coffee-cup.svg" alt="coffee-cup">
-              </a>
-              
             </div>
           </div>
         </div>
         <div class="hero">
-          <div class="hero__container">
-            <div class="offer">
-              <h1 class="offer__title">Enjoy <span>premium coffee at our charming cafe</span></h1>
-              <div class="offer__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</div>
-              <a href="menu.html" class="offer__button">
-                  <div class="offer__button__text">
-                  Menu </div>
-                <img src="images/coffee-cup.svg" alt="coffee-cup">
-              </a>
+          <div class="hero__intro">
+            <div class="hero__container">
+              <div class="offer">
+                <h1 class="offer__title">Enjoy <span>premium coffee at our charming cafe</span></h1>
+                <div class="offer__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</div>
+                <a href="menu.html" class="offer__button">
+                    <div class="offer__button__text">
+                    Menu </div>
+                  <img src="images/coffee-cup.svg" alt="coffee-cup">
+                </a>
+              </div>
             </div>
+            <div class="hero__video">
+              <video class="video__media"  src="images/video (2160p).mp4" autoplay muted loop></video>
+            </div> 
+            
           </div>
+          
         </div>
       </header>
       <div class="favorite-coffee">
@@ -61,15 +66,16 @@
           <div class="favorite-coffee__title" id="favorite">Choose your <span>favorite</span> coffee</div>
           <div class="favorite-coffee__slider">
             <div class="slider__pictures">
-              <div class="button-icon-dark">
+              <div class="button-icon-dark" id="button-left">
                <div class="arrow__left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
               </svg></div> 
               </div>
-              <div class="row-slider">
-                <div class="slide1">
-                  <div class="slide__content">
-                    <div class="coffee-slider-1">
+              <div class="slaider__container">
+                <div class="slider__wrapper" id="slider__wrapper">
+                <div class="slider" id="slider">
+                  <div class="slide__content pos_1" id="slide_left">
+                    <div class="slide__image">
                       <img src="images/coffee-slider-1.png" alt="coffee-1">
                     </div>
                     <div class="slider__description">
@@ -78,20 +84,47 @@
                       <div class="slider__price">$5.50</div>
                     </div>
                   </div>
+                  <div class="slide__content pos_2" id="slide_active">
+                    <div class="slide__image">
+                      <img src="images/coffee-slider-2.png" alt="coffee-2">
+                    </div>
+                    <div class="slider__description">
+                      <div class="slider__title">Caramel Macchiato</div>
+                      <div class="slider__text">Fragrant and unique classic espresso with rich caramel-peanut syrup, with cream under whipped thick foam.</div>
+                      <div class="slider__price">$5.00</div>
+                    </div>
+                  </div>
+                  <div class="slide__content pos_3" id="slide_right">
+                    <div class="slide__image">
+                      <img src="images/coffee-slider-3.png" alt="coffee-3">
+                    </div>
+                    <div class="slider__description">
+                      <div class="slider__title">Ice coffee</div>
+                      <div class="slider__text">A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.</div>
+                      <div class="slider__price">$4.50</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="button-icon-dark">
+              </div>
+              
+              <div class="button-icon-dark" id="button-right">
                 <div class="arrow__right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg></div> 
                </div>
             </div>
             <div class="slider__controls">
-              <div class="slider__control active"></div>
-              <div class="slider__control"></div>
-              <div class="slider__control"></div>
+              <div class="slider__control">
+                <div class="control__line line1"></div>
+              </div>
+              <div class="slider__control">
+                <div class="control__line line2"></div>
+              </div>
+              <div class="slider__control">
+                <div class="control__line line3"></div>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -222,5 +255,6 @@
         </div>
       </footer>
     </div>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
