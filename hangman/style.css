@@ -164,3 +164,11 @@ div span {
   color: brown;
   font-weight:bold;
 }
+
+.pop {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  color:brown;
+  background-color: brown;
+}
