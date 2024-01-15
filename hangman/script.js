@@ -2,6 +2,8 @@ const div = document.createElement("div");
 const div1 = document.createElement("div");
 const div2 = document.createElement("div");
 const div3 = document.createElement("div");
+const div4 = document.createElement("div");
+
 let answer = 0;
 let answers = 6;
 let checked = [];
@@ -43,6 +45,20 @@ function generateContent() {
   div.prepend(div1);
   div2.className = "text-block";
   div.append(div2);
+
+  document.body.prepend(div3);
+  div3.setAttribute("class", "modal__backgr hidden");
+  div3.setAttribute("id", "backgr");
+  document.body.prepend(div4);
+  div4.className = "modal hidden";
+  div4.setAttribute("id", "modal");
+
+  div4.insertAdjacentHTML(
+    "beforeend",
+    `<div class="modal__text" id = "modalText">
+    </div>`
+  );
+
   div1.insertAdjacentHTML(
     "beforeend",
     `<img id='hangman' src="images/hangman-0.svg" alt="">
