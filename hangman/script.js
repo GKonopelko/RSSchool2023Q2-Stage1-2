@@ -11,26 +11,26 @@ let fault = 0;
 const animals = [
   "лиса",
   "медведь",
-  "попугай",
-  "крокодил",
-  "аллигатор",
-  "корова",
-  "черепаха",
-  "волк",
-  "собака",
-  "опоссум",
-  "бобер",
-  "муравьед",
-  "слон",
-  "гипопотам",
-  "таракан",
-  "олень",
-  "лось",
-  "белка",
-  "рысь",
-  "выпь",
-  "тигр",
-  "анаконда",
+  // "попугай",
+  // "крокодил",
+  // "аллигатор",
+  // "корова",
+  // "черепаха",
+  // "волк",
+  // "собака",
+  // "опоссум",
+  // "бобер",
+  // "муравьед",
+  // "слон",
+  // "гипопотам",
+  // "таракан",
+  // "олень",
+  // "лось",
+  // "белка",
+  // "рысь",
+  // "выпь",
+  // "тигр",
+  // "анаконда",
 ];
 
 function generateContent() {
@@ -42,9 +42,9 @@ function generateContent() {
   div.append(div2);
   div1.insertAdjacentHTML(
     "beforeend",
-    `<h1>Виселица</h1>
-  <img id='hangman' src="images/hangman-0.svg" alt="">
+    `<img id='hangman' src="images/hangman-0.svg" alt="">
   <p id="result" class="result"></p>
+  <h3>Виселица</h1>
   `
   );
   div2.insertAdjacentHTML(
@@ -96,19 +96,47 @@ function nextImg() {
 
 function isOver() {
   if (solution === answer) {
+    document.querySelector("#underscore").innerHTML = "Верный ответ: " + answer;
     document.querySelector("#keyboard").innerHTML = "Вы выйграли!";
-    document.querySelector("#keyboard").insertAdjacentHTML("beforeend",
-    `<div class="pop" id='pop'></div>`
-    );
+    showModal();
   }
 }
 
 function isLost() {
   if (fault === answers) {
     document.querySelector("#underscore").innerHTML = "Верный ответ: " + answer;
-    document.querySelector("#result").innerHTML = "Вы не угадали :(";
-    generateKeys()
+    document.querySelector("#keyboard").innerHTML = "Вы не угадали :(";
+    showModal();
   }
+}
+
+let underscore = document.querySelector("#underscore");
+const modalText = document.querySelector("#modalText");
+const keyboard = document.querySelector("#keyboard");
+const resetBtn = document.querySelector("#reset");
+
+function showModal() {
+  modal.classList.add('show');
+  modal.classList.remove('hidden');
+  backgr.classList.remove('hidden');
+  modalText.append(underscore, keyboard, resetBtn);
+  backgr.addEventListener('click', hideModal);
+}
+
+function hideModal() {
+  modal.classList.remove('show');
+  modal.classList.add('hidden');
+  backgr.classList.add('hidden');
+  div2.append(keyboard, resetBtn);
+  div2.prepend(underscore);
+  
+  fault = 0;
+  checked = [];
+  document.querySelector("#hangman").src = `images/hangman-0.svg`;
+  updateFault();
+  generateKeys();
+  chooseItem();
+  checkedWord();
 }
 
 function checkedWord() {
@@ -124,6 +152,11 @@ function updateFault() {
 }
 
 function reset() {
+  modal.classList.remove('show');
+  modal.classList.add('hidden');
+  backgr.classList.add('hidden');
+  div2.append(keyboard, resetBtn);
+  div2.prepend(underscore);
   fault = 0;
   checked = [];
   document.querySelector("#hangman").src = `images/hangman-0.svg`;
@@ -138,5 +171,5 @@ chooseItem();
 generateKeys();
 checkedWord();
 
-const resetBtn = document.querySelector("#reset");
+
 resetBtn.addEventListener("click", reset);
