@@ -11,26 +11,29 @@ let fault = 0;
 const animals = [
   "лиса",
   "медведь",
-  // "попугай",
-  // "крокодил",
-  // "аллигатор",
-  // "корова",
-  // "черепаха",
-  // "волк",
-  // "собака",
-  // "опоссум",
-  // "бобер",
-  // "муравьед",
-  // "слон",
-  // "гипопотам",
-  // "таракан",
-  // "олень",
-  // "лось",
-  // "белка",
-  // "рысь",
-  // "выпь",
-  // "тигр",
-  // "анаконда",
+  "попугай",
+  "крокодил",
+  "аллигатор",
+  "корова",
+  "черепаха",
+  "волк",
+  "собака",
+  "опоссум",
+  "бобер",
+  "муравьед",
+  "слон",
+  "гипопотам",
+  "таракан",
+  "олень",
+  "лось",
+  "белка",
+  "рысь",
+  "выпь",
+  "тигр",
+  "анаконда",
+  "жираф",
+  "енот",
+  "песец",
 ];
 
 function generateContent() {
@@ -63,8 +66,13 @@ function generateKeys() {
     .split("")
     .map(
       (key) =>
-        `<button class="btn" id='` + key +
-        `'onClick="checkKey('` + key + `')">` + key +`
+        `<button class="btn" id='` +
+        key +
+        `'onClick="checkKey('` +
+        key +
+        `')">` +
+        key +
+        `
       </button>`
     )
     .join("");
@@ -75,15 +83,14 @@ function chooseItem() {
   answer = animals[Math.floor(Math.random() * animals.length)];
 }
 
-
 function checkKey(chosenkey) {
   checked.indexOf(chosenkey) === -1 ? checked.push(chosenkey) : null;
-  document.querySelector('#' + chosenkey).setAttribute("disabled", true);
+  document.querySelector("#" + chosenkey).setAttribute("disabled", true);
   if (answer.indexOf(chosenkey) >= 0) {
     checkedWord();
     isOver();
   } else if (answer.indexOf(chosenkey) === -1) {
-    fault +=1;
+    fault += 1;
     updateFault();
     isLost();
     nextImg();
@@ -116,20 +123,20 @@ const keyboard = document.querySelector("#keyboard");
 const resetBtn = document.querySelector("#reset");
 
 function showModal() {
-  modal.classList.add('show');
-  modal.classList.remove('hidden');
-  backgr.classList.remove('hidden');
+  modal.classList.add("show");
+  modal.classList.remove("hidden");
+  backgr.classList.remove("hidden");
   modalText.append(underscore, keyboard, resetBtn);
-  backgr.addEventListener('click', hideModal);
+  backgr.addEventListener("click", hideModal);
 }
 
 function hideModal() {
-  modal.classList.remove('show');
-  modal.classList.add('hidden');
-  backgr.classList.add('hidden');
+  modal.classList.remove("show");
+  modal.classList.add("hidden");
+  backgr.classList.add("hidden");
   div2.append(keyboard, resetBtn);
   div2.prepend(underscore);
-  
+
   fault = 0;
   checked = [];
   document.querySelector("#hangman").src = `images/hangman-0.svg`;
@@ -152,9 +159,9 @@ function updateFault() {
 }
 
 function reset() {
-  modal.classList.remove('show');
-  modal.classList.add('hidden');
-  backgr.classList.add('hidden');
+  modal.classList.remove("show");
+  modal.classList.add("hidden");
+  backgr.classList.add("hidden");
   div2.append(keyboard, resetBtn);
   div2.prepend(underscore);
   fault = 0;
@@ -170,6 +177,5 @@ document.querySelector("#answers").innerHTML = answers;
 chooseItem();
 generateKeys();
 checkedWord();
-
 
 resetBtn.addEventListener("click", reset);
