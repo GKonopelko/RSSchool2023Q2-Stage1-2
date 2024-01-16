@@ -111,6 +111,14 @@ function checkKey(chosenkey) {
   }
 }
 
+document.addEventListener("keydown", function (event) {
+  let letter = event.key;
+if (letter.length === 1 && letter.match(/[А-Я]/i)) {
+    checkKey(event.key);
+  }
+});
+
+
 function nextImg() {
   document.querySelector("#hangman").src = `images/hangman-${fault}.svg`;
 }
@@ -193,3 +201,4 @@ generateKeys();
 checkedWord();
 
 resetBtn.addEventListener("click", reset);
+
