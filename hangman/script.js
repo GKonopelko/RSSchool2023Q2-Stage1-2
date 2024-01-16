@@ -3,7 +3,6 @@ const div1 = document.createElement("div");
 const div2 = document.createElement("div");
 const div3 = document.createElement("div");
 const div4 = document.createElement("div");
-
 let answer = 0;
 let answers = 6;
 let checked = [];
@@ -11,31 +10,66 @@ let solution = null;
 let fault = 0;
 
 const animals = [
-  "лиса",
-  "медведь",
-  "попугай",
-  "крокодил",
-  "аллигатор",
-  "корова",
-  "черепаха",
-  "волк",
-  "собака",
-  "опоссум",
-  "бобер",
-  "муравьед",
-  "слон",
-  "гиппопотам",
-  "таракан",
-  "олень",
-  "лось",
-  "белка",
-  "рысь",
-  "выпь",
-  "тигр",
-  "анаконда",
-  "жираф",
-  "енот",
-  "песец",
+  {
+    quest: "Животное с хвостом",
+    answ: "лиса",
+  },
+  {
+    quest: "Любит мед",
+    answ: "медведь",
+  },
+  {
+    quest: "Птица Флинта",
+    answ: "попугай",
+  },
+  {
+    quest: "Он с Кокошей и Тотошей",
+    answ: "крокодил",
+  },
+  {
+    quest: "Львенок и ",
+    answ: "черепаха",
+  },
+  {
+    quest: "зубами щелк",
+    answ: "волк",
+  },
+  {
+    quest: "Друг человека",
+    answ: "собака",
+  },
+  {
+    quest: "Хитер ",
+    answ: "бобер",
+  },
+  {
+    quest: "бегемот",
+    answ: "гиппопотам",
+  },
+  {
+    quest: "Рыжий и усатый",
+    answ: "таракан",
+  },
+  {
+    quest: "цокотуха",
+    answ: "муха",
+  },
+  {
+    quest: "Вдруг откуда то летит маленький",
+    answ: "комарик",
+  },
+  {
+    quest: "Рано-рано два",
+    answ: "барана",
+  },
+  {
+    quest: "А потом позвонила",
+    answ: "свинья",
+  },
+  {
+    quest: "Вчера проглотил он морского",
+    answ: "ежа",
+  },
 ];
 
 function generateContent() {
@@ -67,13 +101,15 @@ function generateContent() {
   div2.insertAdjacentHTML(
     "beforeend",
     `<p id="underscore" class="underscore">Верный ответ</p>
-    <p>Угадай название животного</p>
+    <p id="hint">Угадай название животного</p>
     <p class="incorrect">Неверных ответов: <span id='fault'>0</span> из <span id='answers'></span></p>
     <div id="keyboard" class="keyboard"></div>
     <button class="reset-btn" id='reset'>Новая игра</button>`
   );
 }
 generateContent();
+
+let hint = document.querySelector("#hint");
 
 function generateKeys() {
   let keyButtons = "абвгдежзиклмнопрстуфхцчшщьэюя"
@@ -95,15 +131,17 @@ function generateKeys() {
 
 function chooseItem() {
   answer = animals[Math.floor(Math.random() * animals.length)];
+  hint.innerHTML = answer.quest;
+  console.log(answer.answ);
 }
 
 function checkKey(chosenkey) {
   checked.indexOf(chosenkey) === -1 ? checked.push(chosenkey) : null;
   document.querySelector("#" + chosenkey).setAttribute("disabled", true);
-  if (answer.indexOf(chosenkey) >= 0) {
+  if (answer.answ.indexOf(chosenkey) >= 0) {
     checkedWord();
     isOver();
-  } else if (answer.indexOf(chosenkey) === -1) {
+  } else if (answer.answ.indexOf(chosenkey) === -1) {
     fault += 1;
     updateFault();
     isLost();
@@ -113,19 +151,19 @@ function checkKey(chosenkey) {
 
 document.addEventListener("keydown", function (event) {
   let letter = event.key;
-if (letter.length === 1 && letter.match(/[А-Я]/i)) {
+  if (letter.length === 1 && letter.match(/[А-Я]/i)) {
     checkKey(event.key);
   }
 });
-
 
 function nextImg() {
   document.querySelector("#hangman").src = `images/hangman-${fault}.svg`;
 }
 
 function isOver() {
-  if (solution === answer) {
-    document.querySelector("#underscore").innerHTML = "Верный ответ: " + answer;
+  if (solution === answer.answ) {
+    document.querySelector("#underscore").innerHTML =
+      "Верный ответ: " + answer.answ;
     document.querySelector("#keyboard").innerHTML = "Вы выйграли!";
     showModal();
   }
@@ -133,7 +171,8 @@ function isOver() {
 
 function isLost() {
   if (fault === answers) {
-    document.querySelector("#underscore").innerHTML = "Верный ответ: " + answer;
+    document.querySelector("#underscore").innerHTML =
+      "Верный ответ: " + answer.answ;
     document.querySelector("#keyboard").innerHTML = "Вы не угадали :(";
     showModal();
   }
@@ -169,7 +208,7 @@ function hideModal() {
 }
 
 function checkedWord() {
-  solution = answer
+  solution = answer.answ
     .split("")
     .map((key) => (checked.indexOf(key) >= 0 ? key : " _ "))
     .join("");
@@ -201,4 +240,3 @@ generateKeys();
 checkedWord();
 
 resetBtn.addEventListener("click", reset);
-
