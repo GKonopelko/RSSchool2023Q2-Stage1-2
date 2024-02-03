@@ -1,2 +1,44 @@
+.body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+}
 
+table {
+  margin-top: 1rem;
+  border: 1px solid gray;
+  background-color: gray;
+}
+
+td {
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+}
+
+
+th:first-child {
+  background-color: white;
+  border-right: 3px solid gray;
+  border-bottom: none;
+}
+
+th {
+  border-bottom: 3px solid gray;
+}
+
+tr {
+  background-color: white;
+}
+
+
+.checked {
+  background-color: black;
+}
+
+button {
+  margin: 1rem;
+}
 
