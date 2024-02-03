@@ -20,7 +20,7 @@ function generateContent() {
   document.body.append(title);
 
   const tableTag = document.createElement("table");
-  tableTag.innerHTML = `Table`;
+  // tableTag.innerHTML = `Table`;
   tableTag.setAttribute("class", "table");
   tableTag.setAttribute("id", "game-board");
   document.body.append(tableTag);  
@@ -41,28 +41,68 @@ function generateContent() {
   titleRow.appendChild(document.createElement("th"));
   for (let col = 0; col < tableWidth; col += 1) {
     columnNum = document.createElement("th");
-    columnNum.innerHTML = `0`;
+    columnNum.innerHTML = columnsFilling[col].join("<br>");;
     titleRow.appendChild(columnNum);
   }
   gameBoard.appendChild(titleRow);
   
   for (let row = 0; row < tableHeight; row += 1) {
     const rowNum = document.createElement("th");
-    rowNum.innerHTML = `0`;
+    rowNum.innerHTML = rowsFilling[row].join("&nbsp");
     const tableRow = document.createElement("tr");
     tableRow.appendChild(rowNum);
     for (let col = 0; col < tableWidth; col+= 1) {
       let fig = document.createElement("td");
-      fig.innerHTML = `0`;
+      fig.setAttribute("onclick", "filling(this, " + row + ", " + col + ")");
       tableRow.appendChild(fig);
     }
     gameBoard.appendChild(tableRow);
   };
 }
+
+function generateNum() {
+  let columnValue = [];
+
+  for (let i in model) {
+    let frm = titleNumbers(model[i]);
+    rowsFilling[i] = frm;
+  }
+
+  for (let col = 0; col < tableWidth; col += 1) {
+    let column = [];
+    for (let row = 0; row < tableHeight; row += 1) {
+      column.push(model[row][col]);
+    }
+    columnValue.push(column);
+  }
+
+  for (let i in columnValue) {
+    arr = titleNumbers(columnValue[i]);
+    columnsFilling[i] = arr;
+  }
+}
+
+function titleNumbers(columnItem) {
+  let arr = [];
+  let iValue = 0;
+  for (let i = 0; i < columnItem.length + 1; i+= 1) {
+    if (columnItem[i] === true) {
+      iValue += 1;
+    } else {
+      if (iValue !== 0) {
+        arr.push(iValue);
+        iValue = 0;
+    }
+    }
+  }
+  return arr;
+}
+
+function filling(element, row, col) {
+  element.classList == "checked" ? table[row][col] = false : table[row][col] = true;
+  element.classList.toggle("checked")
+  checkModel();
+}
+
+generateNum();
 generateContent();
-
-
-
-
-
-
