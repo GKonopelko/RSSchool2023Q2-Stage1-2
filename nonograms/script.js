@@ -44,12 +44,20 @@ let modelObj = {
   ],
 };
 
-let currentModel = modelObj[0];
+let sec;
+
+let lsCurrentModel = JSON.parse(localStorage.getItem("lsCurrentModel"));
+console.log(lsCurrentModel);
+
+let currentModel;
+lsCurrentModel ? (currentModel = lsCurrentModel) : (currentModel = modelObj[0]);
+console.log(currentModel);
 
 function choseModel(modelNumber) {
   currentModel = modelObj[modelNumber];
   console.log(currentModel);
-  generateNum(currentModel);
+  localStorage.setItem("lsCurrentModel", JSON.stringify(currentModel));
+  location.reload();
 }
 
 const tableHeight = currentModel.length;
@@ -80,7 +88,6 @@ function generateContent() {
   document.body.append(resetBtn);
 
   const modalWind = document.createElement("dialog");
-  modalWind.innerHTML = `Great! You have solved the nonogram!`;
   modalWind.setAttribute("id", "dialog");
   // modalWind.setAttribute("open","open");
   document.body.append(modalWind);
@@ -210,6 +217,11 @@ document.addEventListener("click", () => {
 
 function checkModel() {
   if (JSON.stringify(currentModel) == JSON.stringify(table)) {
+    document.querySelector(
+      "#dialog"
+    ).innerHTML = `"Great! You have solved the nonogram in ${
+      60 - sec
+    } seconds!"`;
     dialog.setAttribute("open", "");
     isModalOpen = true;
     clearInterval(timerId);
@@ -230,13 +242,12 @@ function startTimer() {
     return console.log(currentTime);
   }
   timerId = setInterval(function () {
-    let min = Math.floor(currentTime / 60);
-    let sec = Math.floor(currentTime % 60);
+    min = Math.floor(currentTime / 60);
+    sec = Math.floor(currentTime % 60);
     sec = sec < 10 ? "0" + sec : sec;
     min = min < 10 ? "0" + min : min;
     document.querySelector("#timer").innerHTML = `Time left ${min}:${sec}`;
     if (currentTime == 0) {
-      console.log("use");
       document.querySelector(
         "#dialog"
       ).innerHTML = `Sorry! No time left. Try again!`;
@@ -247,4 +258,5 @@ function startTimer() {
     currentTime--;
   }, 1000);
   timerWorking = true;
+  return sec;
 }
