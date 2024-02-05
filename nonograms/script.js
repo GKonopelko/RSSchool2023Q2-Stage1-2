@@ -1,18 +1,18 @@
 let modelObj = {
-  0: [
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, false, true, true],
-  ],
   // 0: [
-  //   [true, true, true, true, true],
-  //   [false, false, false, true, false],
-  //   [false, false, true, false, false],
-  //   [false, true, false, false, false],
-  //   [true, true, true, true, true],
+  //   [false, false, false, false, false],
+  //   [false, false, false, false, false],
+  //   [false, false, false, false, false],
+  //   [false, false, false, false, false],
+  //   [false, false, false, true, true],
   // ],
+  0: [
+    [true, true, true, true, true],
+    [false, false, false, true, false],
+    [false, false, true, false, false],
+    [false, true, false, false, false],
+    [true, true, true, true, true],
+  ],
   1: [
     [true, true, true, true, false],
     [true, false, false, true, false],
@@ -225,7 +225,7 @@ timerWorking = false;
 let timerId;
 
 function startTimer() {
-  let currentTime = 5;
+  let currentTime = 60;
   if (timerWorking) {
     return console.log(currentTime);
   }
@@ -237,7 +237,9 @@ function startTimer() {
     document.querySelector("#timer").innerHTML = `Time left ${min}:${sec}`;
     if (currentTime == 0) {
       console.log("use");
-      document.querySelector("#dialog").innerHTML = `Sorry! No time left. Try again!`;
+      document.querySelector(
+        "#dialog"
+      ).innerHTML = `Sorry! No time left. Try again!`;
       dialog.setAttribute("open", "");
       clearInterval(timerId);
       isModalOpen = true;
@@ -246,5 +248,3 @@ function startTimer() {
   }, 1000);
   timerWorking = true;
 }
-
-
