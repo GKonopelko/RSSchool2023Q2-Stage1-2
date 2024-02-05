@@ -1,55 +1,60 @@
-const model0 = [
-  [true, true, true, true, true],
-  [false, false, false, true, false],
-  [false, false, true, false, false],
-  [false, true, false, false, false],
-  [true, true, true, true, true],
-];
+let modelObj = {
+  // 0: [
+  //   [false, false, false, false, false],
+  //   [false, false, false, false, false],
+  //   [false, false, false, false, false],
+  //   [false, false, false, false, false],
+  //   [false, false, false, true, true],
+  // ],
+  0: [
+    [true, true, true, true, true],
+    [false, false, false, true, false],
+    [false, false, true, false, false],
+    [false, true, false, false, false],
+    [true, true, true, true, true],
+  ],
+  1: [
+    [true, true, true, true, false],
+    [true, false, false, true, false],
+    [true, true, true, true, false],
+    [true, false, false, false, false],
+    [true, true, true, true, false],
+  ],
+  2: [
+    [true, false, false, false, false],
+    [true, false, false, false, false],
+    [true, true, true, true, false],
+    [true, false, false, true, false],
+    [true, true, true, true, false],
+  ],
+  3: [
+    [false, true, true, true, false],
+    [true, true, false, true, false],
+    [false, true, false, false, false],
+    [false, true, false, false, false],
+    [false, true, false, false, false],
+  ],
 
-const model1 = [
-  [true, true, true, true, false],
-  [true, false, false, true, false],
-  [true, true, true, true, false],
-  [true, false, false, false, false],
-  [true, true, true, true, false],
-];
+  4: [
+    [false, true, true, true, true],
+    [false, false, false, false, true],
+    [false, true, true, true, true],
+    [false, true, false, false, true],
+    [false, true, true, true, true],
+  ],
+};
 
-const model2 = [
-  [true, false, false, false, false],
-  [true, false, false, false, false],
-  [true, true, true, true, false],
-  [true, false, false, true, false],
-  [true, true, true, true, false],
-];
+let currentModel = modelObj[0];
 
-const model3 = [
-  [false, true, true, true, false],
-  [true, true, false, true, false],
-  [false, true, false, false, false],
-  [false, true, false, false, false],
-  [false, true, false, false, false],
-];
-
-const model4 = [
-  [false, true, true, true, true],
-  [false, false, false, false, true],
-  [false, true, true, true, true],
-  [false, true, false, false, true],
-  [false, true, true, true, true],
-];
-
-let model = model0;
 function choseModel(modelNumber) {
-model = modelNumber;
-      console.log(model);
-      generateContent();
-      generateNum();
-      checkModel();
+  currentModel = modelObj[modelNumber];
+  console.log(currentModel);
+  generateNum(currentModel);
 }
 
-
-const tableHeight = model.length;
-const tableWidth = model[0].length;
+const tableHeight = currentModel.length;
+console.log(currentModel);
+const tableWidth = currentModel[0].length;
 const table = [...Array(tableHeight)].map((element) =>
   Array(tableWidth).fill(false)
 );
@@ -62,28 +67,6 @@ function generateContent() {
   const title = document.createElement("h1");
   title.innerHTML = `Nonogram game`;
   document.body.append(title);
-
-  const template = document.createElement("div");
-  template.innerHTML = `Chose a template: `;
-  template.setAttribute("class", "template");
-  template.setAttribute("id", "template");
-  document.body.append(template);
-
-  for (let i = 0; i < 5; i += 1) {
-    const templateBtn = document.createElement("button");
-    templateBtn.setAttribute("id", `template${i}`);
-    template.append(templateBtn);
-    document.querySelector(`#template${i}`).addEventListener("click", 
-    () => {
-      choseModel(`template${i}`);
-    });
-  }
-  console.log(model);
-  const template0 = (document.querySelector("#template0").innerHTML = `z`);
-  const template1 = (document.querySelector("#template1").innerHTML = `e`);
-  const template2 = (document.querySelector("#template2").innerHTML = `b`);
-  const template3 = (document.querySelector("#template3").innerHTML = `r`);
-  const template4 = (document.querySelector("#template4").innerHTML = `a`);
 
   const tableTag = document.createElement("table");
   // tableTag.innerHTML = `Table`;
@@ -124,21 +107,20 @@ function generateContent() {
     }
     gameBoard.appendChild(tableRow);
   }
-  return model;
 }
 
 function generateNum() {
   let columnValue = [];
 
-  for (let i in model) {
-    let frm = titleNumbers(model[i]);
+  for (let i in currentModel) {
+    let frm = titleNumbers(currentModel[i]);
     rowsFilling[i] = frm;
   }
 
   for (let col = 0; col < tableWidth; col += 1) {
     let column = [];
     for (let row = 0; row < tableHeight; row += 1) {
-      column.push(model[row][col]);
+      column.push(currentModel[row][col]);
     }
     columnValue.push(column);
   }
@@ -170,11 +152,42 @@ function filling(element, row, col) {
     ? (table[row][col] = false)
     : (table[row][col] = true);
   element.classList.toggle("checked");
+  startTimer();
   checkModel();
 }
 
 generateNum();
 generateContent();
+
+function generateTemplate() {
+  const template = document.createElement("div");
+  template.innerHTML = `Chose a template: `;
+  template.setAttribute("class", "template");
+  template.setAttribute("id", "template");
+  document.querySelector("h1").after(template);
+
+  const timer = document.createElement("div");
+  timer.setAttribute("id", "timer");
+  document.querySelector("#template").after(timer);
+
+  for (let i = 0; i < 5; i += 1) {
+    const templateBtn = document.createElement("button");
+    templateBtn.setAttribute("id", `template${i}`);
+    template.append(templateBtn);
+    document.querySelector(`#template${i}`).addEventListener("click", () => {
+      console.log(i);
+      choseModel(i);
+    });
+  }
+  console.log(currentModel);
+  const template0 = (document.querySelector("#template0").innerHTML = `z`);
+  const template1 = (document.querySelector("#template1").innerHTML = `e`);
+  const template2 = (document.querySelector("#template2").innerHTML = `b`);
+  const template3 = (document.querySelector("#template3").innerHTML = `r`);
+  const template4 = (document.querySelector("#template4").innerHTML = `a`);
+}
+
+generateTemplate();
 
 const dialog = document.querySelector("#dialog");
 let isModalOpen = false;
@@ -196,9 +209,10 @@ document.addEventListener("click", () => {
 });
 
 function checkModel() {
-  if (JSON.stringify(model) == JSON.stringify(table)) {
+  if (JSON.stringify(currentModel) == JSON.stringify(table)) {
     dialog.setAttribute("open", "");
     isModalOpen = true;
+    clearInterval(timerId);
   }
 }
 
@@ -206,3 +220,31 @@ const reset = document.querySelector("#reset");
 reset.addEventListener("click", () => {
   location.reload();
 });
+
+timerWorking = false;
+let timerId;
+
+function startTimer() {
+  let currentTime = 60;
+  if (timerWorking) {
+    return console.log(currentTime);
+  }
+  timerId = setInterval(function () {
+    let min = Math.floor(currentTime / 60);
+    let sec = Math.floor(currentTime % 60);
+    sec = sec < 10 ? "0" + sec : sec;
+    min = min < 10 ? "0" + min : min;
+    document.querySelector("#timer").innerHTML = `Time left ${min}:${sec}`;
+    if (currentTime == 0) {
+      console.log("use");
+      document.querySelector(
+        "#dialog"
+      ).innerHTML = `Sorry! No time left. Try again!`;
+      dialog.setAttribute("open", "");
+      clearInterval(timerId);
+      isModalOpen = true;
+    }
+    currentTime--;
+  }, 1000);
+  timerWorking = true;
+}
