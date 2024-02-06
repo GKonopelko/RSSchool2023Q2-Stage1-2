@@ -18,6 +18,9 @@ td {
   height: 1rem;
   background-color: white;
 }
+.marked:after{
+  content: 'x';
+}
 
 
 th:first-child {
