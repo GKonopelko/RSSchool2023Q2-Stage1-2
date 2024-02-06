@@ -111,6 +111,12 @@ function generateContent() {
       let fig = document.createElement("td");
       fig.setAttribute("onclick", "filling(this, " + row + ", " + col + ")");
       tableRow.appendChild(fig);
+      fig.addEventListener('contextmenu', (event) => {
+        // if (event.button == 2) {
+          fig.classList.toggle("marked");
+          event.preventDefault();
+        // }
+      })
     }
     gameBoard.appendChild(tableRow);
   }
@@ -260,3 +266,4 @@ function startTimer() {
   timerWorking = true;
   return sec;
 }
+
