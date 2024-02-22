@@ -1,4 +1,4 @@
-# My TypeScript Journey: Earned Badges 🏆
+# My TypeScript Journey: Earned Badges [🏆](https://learn.microsoft.com/ru-ru/users/grigorikonopelko-2854/achievements)
 
 ## Badges Overview
 
