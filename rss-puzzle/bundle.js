@@ -1,0 +1,2 @@
+(()=>{"use strict";console.log("index"),document.body.innerHTML+='\n\n<h1>Login Page</h1>\n<p>Please register</p>\n<form>\n<label for="name">First Name</label>\n<input type="text" id="name" required>\n<label for="surname">Surname</label>\n<input type="text" id="surname" required>\n<button>Login</button>\n</form>\n';const e=document.querySelector("form");e.addEventListener("submit",(n=>{n.preventDefault();const t=(e=>{const n=e.querySelectorAll("input"),t={};return n.forEach((e=>{t[e.id]=e.value})),t})(e);console.log(t)}))})();
+//# sourceMappingURL=bundle.js.map

@@ -1,39 +1,69 @@
-console.log("index");
+// const bodyElement = document.body;
+// const title = "Welcome to our website!";
+// const content = "This element comes with additional classes.";
+// const headerElement = document.createElement("h1");
+// headerElement.textContent = title;
+// headerElement.classList.add("custom-header");
 
-// // import "./global.css";
-// import { Button } from "./constructor";
-// import { Component } from "./constructor";
-// ///////////
-
-const bodyElement = document.body;
-const title = "Login Page";
-const content = "Please register";
-
-const template = `
-
-<h1>${title}</h1>
-<p>${content}</p>
-<form>
-<label for="name">First Name</label>
-<input type="text" id="name" required>
-<label for="surname">Surname</label>
-<input type="text" id="surname" required>
-<button>Login</button>
-</form>
-`;
-bodyElement.innerHTML += template;
-
-import { formData } from "./forms";
-
-const form = document.querySelector("form") as HTMLFormElement;
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const data = formData(form);
-  console.log(data);
-});
-
+// class Component {
+//   #children = [];
+//   #node = null;
+//   constructor({ tag = "div", className = "", text = "" }, ...children) {
+//     const node = document.createElement(tag);
+//     node.className = className;
+//     node.textContent = text;
+//     this.#node = node;
+//     if (children) {
+//       this.appendChildren(children);
+//     }
+//   }
+//   append(child) {
+//     this.#children.push(child);
+//     this.#node.append(child.getNode());
+//   }
+//   appendChildren(children) {
+//     children.forEach((el) => {
+//       this.append(el);
+//     });
+//   }
+//   getNode() {
+//     return this.#node;
+//   }
+//   getChildren() {
+//     return this.#children;
+//   }
+//   setTextContent(content) {
+//     this.#node.textContent = content;
+//   }
+//   setAttribute(attribute, value) {
+//     this.#node.setAttribute(attribute, value);
+//   }
+//   removeAttribute(attribute) {
+//     this.#node.removeAttribute(attribute);
+//   }
+//   toggleClass(className) {
+//     this.#node.classList.toggle(className);
+//   }
+//   addListener(event, listener, options = false) {
+//     this.#node.addEventListener(event, listener, options);
+//   }
+//   removeListener(event, listener, options = false) {
+//     this.#node.removeEventListener(event, listener, options);
+//   }
+//   destroyChildren() {
+//     this.#children.forEach((child) => {
+//       child.destroy();
+//     });
+//     this.#children.length = 0;
+//   }
+//   destroy() {
+//     this.destroyChildren();
+//     this.#node.remove();
+//   }
+// }
 // /////////////
+
+// // import { Component } from "./componentClass";
 
 // class Menu extends Component {
 //   constructor({ className, items }) {
@@ -103,24 +133,6 @@ form.addEventListener("submit", (e) => {
 //   }
 // }
 // //////////
-// class InputLabel extends Component {
-//   constructor({ className, text, attr, inputName }) {
-//     super({ tag: "label", className, text });
-//     super({ tag: "a", className, text });
-//     this.onClick = onClick;
-//     this.setAttribute("for", inputName);
-//     if (onClick) {
-//       this.onClick = onClick;
-//       this.addListener("click", this.onClick);
-//     }
-//   }
-
-//   destroy() {
-//     this.removeListener("click", this.onClick);
-//     super.destroy();
-//   }
-// }
-
 // //  const menuItems = [
 // //   { text: 'Home', href: '#' },
 // //   { text: 'About', href: '#about' },
@@ -153,35 +165,29 @@ form.addEventListener("submit", (e) => {
 
 // //////
 
-// // <h1>Login Page</h1>
-// // <form>
-// //   <label for="name">First Name</label>
-// //   <input type="text" id="name" required>
-// //   <label for="surname">Surname</label>
-// //   <input type="text" id="surname" required>
-// //   <button>Login</button>
-// // </form>
+// ///////////
+// class Button extends Component {
+//   constructor({ className, text, onClick }) {
+//     super({ tag: "button", className, text });
+//     if (onClick) {
+//       this.onClick = onClick;
+//       this.addListener("click", this.onClick);
+//     }
+//   }
+
+//   destroy() {
+//     this.removeListener("click", this.onClick);
+//     super.destroy();
+//   }
+// }
+
+// /////
 
 // const paragraph = new Component({
 //   tag: "p",
 //   className: "content",
 //   text: "Component",
 // });
-
-// console.log(paragraph);
-
-// const loginForm = new Component({
-//   tag: "form",
-//   className: "form",
-//   text: "loginForm",
-// });
-
-// // const loginLabel = new InputLabel({
-// //   className: "label",
-// //   text: "",
-// //   attr: "for",
-// //   inputName: "name1",
-// // });
 
 // const app = new Component(
 //   {
@@ -190,11 +196,9 @@ form.addEventListener("submit", (e) => {
 //   new Component({
 //     tag: "h1",
 //     className: "title",
-//     text: "Login Page",
+//     text: title,
 //   }),
 //   paragraph,
-//   loginForm,
-//   // loginLabel,
 //   new Button({
 //     className: "btn",
 //     text: "Component button",
