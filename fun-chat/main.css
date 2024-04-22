@@ -1,0 +1,124 @@
+body,
+form {
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+button {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: normal;
+  opacity: 0.5;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+input:invalid:required {
+  background-image: linear-gradient(to right, pink, beige);
+}
+
+input:valid {
+  border: 1px solid black;
+}
+
+button.active {
+  border: 1px solid red;
+  opacity: 1;
+  cursor: pointer;
+}
+
+button.active:hover {
+  color: green;
+}
+
+.tooltip {
+  font-size: medium;
+  color: palevioletred;
+}
+
+/* #loginBlock, #headerBlock, #mainBlock {
+  display:none;
+} */
+
+#loginBlock.active, #headerBlock.active, #mainBlock.active {
+  display: block;
+}
+
+container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header, main, footer {
+  border: 1px solid;
+  display: flex;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  justify-content: space-around;
+}
+
+main {
+  flex-grow: 3
+}
+
+.header__title {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+}
+
+.main__users {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-right: 1px solid;
+}
+
+.main__chat {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+}
+
+#searchInput {
+  width: 90%;
+}
+
+#userList {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  padding: 0.2rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+.user__status {
+  padding-right: 0.5rem;
+  color:brown;
+}
+
+.user__status.true {
+  color: green;
+  font-weight: 800;
+}
+
+.invisible {
+  display: none;
+}
+
+.user__line {
+  cursor: pointer;
+}
