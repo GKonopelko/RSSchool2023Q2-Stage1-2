@@ -42,9 +42,9 @@ button.active:hover {
   color: palevioletred;
 }
 
-/* #loginBlock, #headerBlock, #mainBlock {
+#loginBlock, #headerBlock, #mainBlock {
   display:none;
-} */
+}
 
 #loginBlock.active, #headerBlock.active, #mainBlock.active {
   display: block;
